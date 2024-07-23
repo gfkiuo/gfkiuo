@@ -1,0 +1,17 @@
+
+    @Test
+    public void test3() throws IOException {
+        //
+        String path = "D:\\ml\\idea\\jishedemo1\\src\\main\\resources\\doc\\table.docx";
+        XWPFTemplate template = XWPFTemplate.compile(path);
+        Map<String,Object> map= new HashMap<>();
+        RowRenderData row0 =Rows.of("姓名","年龄").create();//
+        RowRenderData row1 =Rows.of("占山","18").create();
+        RowRenderData row2 =Rows.of("万兽","20").create();
+        TableRenderData table =Tables.create(row0,row1,row2);
+ 
+        map.put("table",table);//
+        template.render(map);
+        template.writeAndClose(new FileOutputStream("D:\\ml\\idea\\jishedemo1\\src\\main\\resources\\doc\\table1.docx"));
+ 
+    }
