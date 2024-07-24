@@ -1,0 +1,45 @@
+// custom-tab-bar/custom-tab-bar.js
+Component({
+  // 1.不同部分定义 properties
+  properties:{
+    selected:{
+      type:Number,
+      value:null
+    }
+  },
+  data: {
+    color: "#7A7E83",
+    selectedColor: "#3cc51f",
+    list: [{
+      pagePath: "/pages/index/index",
+      iconPath: "/images/ico_home_tab_juchang_nor 2@2x.png",
+      selectedIconPath: "/images/ico_home_tab_juchang_pre 2@2x.png",
+      text: "首页"
+    }, {
+      pagePath: "/pages/commdt/index",
+      iconPath: "/images/ico_home_tab_juchang_nor 3@2x.png",
+      selectedIconPath: "/images/ico_home_tab_juchang_pre 3@2x.png",
+      text: "视频"
+    },
+    {
+      pagePath: "/pages/three/three",
+      iconPath: "/images/ico_home_tab_juchang_nor@2x.png",
+      selectedIconPath: "/images/ico_home_tab_juchang_pre@2x.png",
+      text: "充值"
+    }]
+  },
+  attached() {
+  },
+  methods: {
+    switchTab(e) {
+      console.log("执行跳转",e);
+      const data = e.currentTarget.dataset
+      const url = data.path
+      wx.switchTab({url})
+      this.setData({
+        // 2.不同部分使用 properties 中定义数据
+        selected: this.properties.selected
+      })
+    }
+  }
+})
